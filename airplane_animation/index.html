@@ -4,10 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Airplane Animation</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body background="background.jfif">
-    <marquee scrollamount="15">
-      <img src="airplane.gif" alt="Airplane" />
-    </marquee>
+  <body>
+    <div id="sky">
+      <div class="stars"></div>
+    </div>
+    <div class="moon"></div>
+    <img src="airplane.gif" class="airplane" alt="Airplane" />
   </body>
 </html>
+
+<script>
+  // Generate 100 random stars
+  for (let i = 0; i < 100; i++) {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(star);
+  }
+</script>

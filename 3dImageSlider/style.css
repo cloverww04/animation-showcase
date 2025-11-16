@@ -1,0 +1,225 @@
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    background: radial-gradient(circle at center, #0b2812 0%, #020a04 80%);
+
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(#0f3 1px, transparent 1px),
+        linear-gradient(90deg, #0f3 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0,255,80,0.15), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.banner .slider {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 50s linear infinite;
+}
+
+@keyframes autoRun {
+    from {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }
+    to {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(-360deg);
+    }
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform:
+        rotateY(calc(360deg / var(--quantity) * (var(--position) - 1)))
+        translateZ(550px);
+}
+
+.banner .slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner .content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1200px, 100vw);
+    padding-bottom: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    color: #39ff14;
+    z-index: 20;
+}
+
+.banner .content h1 {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 6rem;
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0 0 15px rgba(0,255,100,0.5);
+}
+
+/* ----- ULTRA-NEON RADIOACTIVE MUTAGEN OOZE GLOW ----- */
+.banner .content::before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140%;
+    height: 200px;
+
+    background: radial-gradient(circle at center,
+        rgba(0, 255, 100, 0.55),
+        rgba(0, 255, 100, 0.25),
+        rgba(0, 255, 100, 0.10),
+        transparent 70%
+    );
+
+    animation: neonPulse 3s infinite ease-in-out;
+    z-index: -2;
+}
+
+/* ----- ORGANIC TALKING MUTAGEN DRIPS ----- */
+.banner .content::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 380px;
+    height: 240px;
+
+    background:
+        radial-gradient(circle at 50% 0%, #39ff14 40%, transparent 41%),
+        radial-gradient(circle at 20% 50%, #39ff14 32%, transparent 33%),
+        radial-gradient(circle at 80% 60%, #39ff14 28%, transparent 29%),
+        radial-gradient(circle at 40% 85%, #39ff14 26%, transparent 27%),
+        radial-gradient(circle at 65% 95%, #39ff14 22%, transparent 23%);
+
+    opacity: 0.95;
+
+    animation:
+        oozeBlob 4s ease-in-out infinite alternate,
+        neonPulse 3s infinite ease-in-out;
+    z-index: -1;
+}
+
+/* ----- NEON RADIATION PULSE ----- */
+@keyframes neonPulse {
+    0% {
+        filter: blur(40px);
+        opacity: 0.6;
+    }
+    50% {
+        filter: blur(60px);
+        opacity: 1;
+    }
+    100% {
+        filter: blur(40px);
+        opacity: 0.6;
+    }
+}
+
+/* ----- ORGANIC OOZE STRETCHING DRIP MOTION ----- */
+@keyframes oozeBlob {
+    0% {
+        transform: translateX(-50%) translateY(0) scaleX(1) scaleY(1);
+    }
+    50% {
+        transform: translateX(-50%) translateY(20px) scaleX(1.05) scaleY(0.92);
+    }
+    100% {
+        transform: translateX(-50%) translateY(35px) scaleX(0.95) scaleY(1.1);
+    }
+}
+
+
+/* ----- Centerpiece orb (behind slider) ----- */
+.centerpiece {
+  position: absolute;
+  top: 40%;
+  left: 55%;
+  width: 400px;  /* make it visible */
+  height: 250px; /* adjust for skyline aspect ratio */
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%) rotateX(-16deg) translateZ(-50px);
+  z-index: 0;
+}
+
+/* Hyper-neon radioactive ooze orb */
+.ooze-core {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 90, 1) 0%,
+    rgba(0, 180, 60, 0.85) 40%,
+    rgba(0, 80, 30, 0.25) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  box-shadow:
+    0 0 30px rgba(0, 255, 120, 0.9),
+    0 0 60px rgba(0, 255, 120, 0.7),
+    inset 0 0 40px rgba(0, 255, 70, 1);
+  animation: oozePulse 3s infinite ease-in-out;
+  mix-blend-mode: screen;
+}
+
+
+@keyframes oozePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+.slider .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  backface-visibility: hidden; 
+}
+
+
+.centerpiece::before {
+  content: "";
+  position: absolute;
+  inset: -50px;
+  background: radial-gradient(circle at center, rgba(0,255,50,0.3), transparent 70%);
+  filter: blur(30px);
+  z-index: -1;
+}
+
